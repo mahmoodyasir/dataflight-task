@@ -1,0 +1,61 @@
+{% extends 'registration/main.html' %}
+
+{% block content %} 
+<div class = "container">
+    <div class="row justify-content-md-center text-left ">
+      <div class = "col-lg-6">
+        <div class="mt-5    registration">
+          <div class="m-5  ">
+            <h1 class="text-center">Register</h1>
+            {% if submitted %}
+            <div class="alert alert-success d-flex justify-content-between fade show" role="alert">
+                <h6>You have successfully registed</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+                {% endif %}
+                {% if warning %}
+                <div class="alert alert-danger d-flex justify-content-between  fade show" role="alert">
+                    <h6>Sorrry! Email is already Taken</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                {% endif %}
+
+            <Form action="" method="POST" >
+                {% csrf_token %}
+                 <div class="row g-3">
+                    <div class="col-md-6  ">
+                        <label for="Name  " class="form-label" >First Name</label>
+                        <input type="text  " required name ="Fname" class="form-control  " placeholder="First name">
+                    </div>
+                    <div class="col-md-6 ">
+                        <label for="Name" class="form-label">Last Name</label>
+                        <input type="text" required name ="Lname"  class="form-control" placeholder="Last name">
+                    </div>
+                    <div class="col-12">
+                        <label for="Email  "required  class="form-label">Email</label>
+                        <input type="email" required  name ="email"  class="form-control  " id="Email" placeholder="abc@gmail.com">
+                    </div>
+                    <div class="col-md-6  ">
+                        <label for="Department" class="form-label">Department</label>
+                        <input type="text" required name ="department"  class="form-control" placeholder="Department">
+                    </div>
+                    <div class="col-md-6 ">
+                        <label for="University "  class="form-label">University</label>
+                        <input type="text" required name ="university" class="form-control" placeholder="University">
+                    </div>
+
+                </div> 
+              
+              <Button class="mt-2 mb-5 btn btn-success " type="submit" >
+                Register
+              </Button>
+            </Form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+ 
+{% endblock  %}
