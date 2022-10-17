@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views import View
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -7,6 +8,11 @@ from .models import *
 from rest_framework import status, views
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+
+
+class Viewindex(View):
+    def get(self, request):
+        return render(request, "registration/instructions.html")
 
 
 def registration(request):
@@ -66,6 +72,7 @@ def registration(request):
 class RegisterView(views.APIView):
     def post(self, request):
         data = request.data
+        print(data)
         email = data["email"]
         name = data["first_name"] + " " + data["last_name"]
         university = data["university"]
